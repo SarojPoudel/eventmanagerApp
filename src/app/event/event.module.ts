@@ -51,7 +51,7 @@ import { EventResourceComponent } from './event-resource/event-resource.componen
           },
           {
             path: 'participant',
-            loadChildren: './participant/participant.module#ParticipantModule'
+            loadChildren: () => import('./participant/participant.module').then(m => m.ParticipantModule)
           }
         ]
       }

@@ -22,7 +22,7 @@ export class GridComponent implements OnInit {
         field: 'price',
         floatingFilterComponent: 'sliderFloatingFilter',
         floatingFilterComponentParams: {
-          maxValue: 100000,
+          maxValue: 72000,
           suppressFilterButton: true
         },
         filter: 'agNumberColumnFilter',
