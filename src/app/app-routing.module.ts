@@ -7,7 +7,7 @@ import {FormsComponent} from './forms/forms.component';
 import {GridComponent} from './grid/grid.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'auth', loadChildren: () => AuthModule},
   {path: 'event', loadChildren: () => EventModule},

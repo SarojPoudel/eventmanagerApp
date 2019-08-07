@@ -15,6 +15,13 @@ import {AgGridModule} from 'ag-grid-angular';
 import {HttpClientModule} from '@angular/common/http';
 import { SliderFloatingFilterComponent } from './grid/slider-floating-filter/slider-floating-filter.component';
 import {FormsModule} from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { CoursesComponent } from './courses/courses.component';
+import * as fromAuth from './auth.reducer';
+
 
 
 @NgModule({
@@ -24,7 +31,8 @@ import {FormsModule} from '@angular/forms';
     HeaderComponent,
     FormsComponent,
     GridComponent,
-    SliderFloatingFilterComponent
+    SliderFloatingFilterComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,15 @@ import {FormsModule} from '@angular/forms';
     FormsModule,
     HttpClientModule,
     AgGridModule.withComponents([SliderFloatingFilterComponent]),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+      }
+    }),
+    StoreModule.forFeature('auth', fromAuth.authReducer),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
     FormioAuthService,
