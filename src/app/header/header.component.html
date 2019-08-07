@@ -1,26 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#"><img class="logo" src="https://portal.form.io/images/formio-logo.png"/></a>
+    <a class="navbar-brand" routerLink="home"><img class="logo" src="https://portal.form.io/images/formio-logo.png"/></a>
     <ul class="nav navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="home"><i class="fa fa-home"></i></a>
       </li>
-      <li class="nav-item" routerLinkActive="form" *ngIf="auth.authenticated">
+      <li class="nav-item" routerLinkActive="form" *ngIf="isLoggedIn$ | async">
         <a class="nav-link" routerLink="form"><i class="fa fa-wpforms"></i> Forms</a>
       </li>
-      <li class="nav-item" routerLinkActive="event" *ngIf="auth.authenticated">
+      <li class="nav-item" routerLinkActive="event" *ngIf="isLoggedIn$ | async">
         <a class="nav-link" routerLink="event"><i class="fa fa-calendar"></i> Events</a>
       </li>
-      <li class="nav-item" routerLinkActive="grid" *ngIf="auth.authenticated">
+      <li class="nav-item" routerLinkActive="grid" *ngIf="isLoggedIn$ | async">
         <a class="nav-link" routerLink="grid"><i class="fas fa-table"></i> Grids</a>
       </li>
     </ul>
     <ul class="nav navbar-nav ml-auto">
-      <li class="nav-item" routerLinkActive="active" *ngIf="!auth.authenticated">
-        <a class="nav-link" routerLink="auth">Login | Register</a>
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedOut$ | async">
+        <a class="nav-link" routerLink="auth" >Login | Register</a>
       </li>
-      <li class="nav-item" *ngIf="auth.authenticated">
-        <a class="nav-link" routerLink="home" (click)="auth.logout()"><span class="glyphicon glyphicon-off"></span>
+      <li class="nav-item" *ngIf="isLoggedIn$ | async">
+        <a class="nav-link" routerLink="home" (click)="auth.logout()" ><span class="glyphicon glyphicon-off"></span>
           Logout</a>
       </li>
     </ul>

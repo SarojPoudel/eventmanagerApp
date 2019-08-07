@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "eventmanager"
+  "defaultProject": "eventmanager",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
